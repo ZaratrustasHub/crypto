@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <title>Bank</title>
+    </head>
+
+    <body>
+        <h1>Welcome to Banksters Bank</h1>
+        <strong>{{ boldmessage }}</strong><br />
+        <a href="/account/login/">Login</a><br />
+    </body>
+
+</html>

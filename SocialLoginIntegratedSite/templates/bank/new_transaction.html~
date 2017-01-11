@@ -1,0 +1,40 @@
+	{% extends "bank/base.html" %}
+
+{% load i18n %}
+
+{% block content %}
+
+	<h1>New Transaction</h1>
+         {% if user.is_authenticated %}
+        {% trans "Welcome " %}: {{ user.username }} <br> 
+
+	<form action='' method='POST'>
+  	  {{ form }}
+   	 <input type="submit" />
+   	 <button class='js-captcha-refresh'></button>
+	</form>
+
+       <form id="transaction_form" method="post" action="/bank/new_transaction/">
+
+            {% csrf_token %}
+            {% for hidden in form.hidden_fields %}
+                {{ hidden }}
+            {% endfor %}
+
+            {% for field in form.visible_fields %}
+                {{ field.errors }}
+                <br>{{ field.help_text }}
+                <br>{{ field }}
+            {% endfor %}
+
+            <input type="submit" name="submit" value="Send" />
+        </form>
+    {% else %}
+	Only for Logged in user
+       <a href="{% url 'auth_login' %}">{% trans "Log in" %}</a>
+    {% endif %}
+
+{% endblock %}	
+
+        
+

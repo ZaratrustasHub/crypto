@@ -1,0 +1,17 @@
+{% extends "bank/base.html" %}
+
+{% load i18n %}
+
+{% block content %}
+
+ <h1>Welcome to Banksters Bank</h1>
+ {% if user.is_authenticated %}
+        {% trans "Welcome " %}: {{ user.username }} <br> 
+        <a href="/bank/new_transaction">New Transaction</a><br />
+        <a href="/accounts/login/">Transaction History</a><br />
+    {% else %}
+       <a href="{% url 'auth_login' %}">{% trans "Log in" %}</a>
+    {% endif %}
+    <hr />
+        
+{% endblock %}
